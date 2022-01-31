@@ -16,12 +16,12 @@
 ## 影片
 
 [環境設定教學](https://youtu.be/toN67sgujtU)  
-[腳本示範影片](https://youtu.be/zDYV-ikjutE)
-
+[MyFcuLogin.py腳本示範影片](https://youtu.be/zDYV-ikjutE)
+[逢甲選課2.0.py腳本示範影片](https://youtu.be/aPssjrIFcZI)
 ## 使用方法
 ```python 逢甲選課2.0.py ```  
 即可執行逢甲選課2.0.py這個檔案
-## 逢甲選課2.0.py功能及環境需球(繼承至逢甲幹課系統)
+## 逢甲選課2.0.py功能及環境需球(繼承https://github.com/zephyrxvxx7/FCU-grabbed-class)
 ### 環境需求
  + selenium
  + chromedriver
