@@ -13,8 +13,8 @@
 + 確認你的chrom瀏覽器是哪一個版本，例如:我是97開頭的我就去裝97開頭的版本，若版本不是97的就下載解壓後取代我專案裡面的chromedriver.exe
 + 確認環境沒問題後即可執行程式
 ## 影片
-![環境設定教學](https://github.com/balsi2001/FCU/blob/main/1.mp4)  
-![腳本示範影片](https://github.com/balsi2001/FCU/blob/main/2.mp4)
+![環境設定教學](https://youtu.be/toN67sgujtU)  
+![腳本示範影片](https://youtu.be/zDYV-ikjutE)
 
 ## 使用方法
 ```python 逢甲選課2.0.py ```  
