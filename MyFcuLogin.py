@@ -55,10 +55,12 @@ def login():
     sleep(1.5)
     browser.execute_script("document.getElementsByClassName('ng-scope')[76].click();")
     
+    
    
     #browser.find_element_by_xpath('/html/body/div/div[3]/div/ul/li[10]').click()
-    browser.execute_script("document.getElementsByClassName('li nav-item ng-scope active')[0].click();")
+    #browser.execute_script("document.getElementsByClassName('li nav-item ng-scope active')[0].click();")
     #browser.find_element_by_xpath('/html/body/div/div[3]/div/ul/li[10]/a').click()
-    browser.execute_script("document.getElementsByClassName('nav-link ng-binding')[9].click();")
+    #browser.execute_script("document.getElementsByClassName('nav-link ng-binding')[9].click();")
+    
 if __name__ == "__main__":
     login()
