@@ -16,7 +16,7 @@
 ## 影片
 
 [環境設定教學](https://youtu.be/toN67sgujtU)  
-[MyFcuLogin.py腳本示範影片](https://youtu.be/zDYV-ikjutE)
+[MyFcuLogin.py腳本示範影片](https://youtu.be/zDYV-ikjutE)  
 [逢甲選課2.0.py腳本示範影片](https://youtu.be/aPssjrIFcZI)
 ## 使用方法
 ```python 逢甲選課2.0.py ```  
