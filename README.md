@@ -12,6 +12,7 @@
 + 輸入``` pip install  -r requirements.txt```後enter
 + 確認你的chrom瀏覽器是哪一個版本，例如:我是97開頭的我就去裝97開頭的版本，若版本不是97的就下載解壓後取代我專案裡面的chromedriver.exe
 + 確認環境沒問題後即可執行程式
++ 最後，請確認執行程式時是在虛擬環境中，若不在的話，請在程式當前路徑下使用cmd並輸入```.venv\Scripts\activate.bat```後enter
 ## 影片
 
 [環境設定教學](https://youtu.be/toN67sgujtU)  
