@@ -71,7 +71,7 @@ def grab():
     for i in classID:
         print(i)
     while len(classID):
-
+        random.shuffle(classID)
         try:
             br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]')))
             br.click()
