@@ -8,7 +8,7 @@
 + 解壓縮後在專案當前目錄開啟CMD
 + 輸入```cd FCU```後Enter
 + 輸入```python -m venv .venv```後Enter 
-+ 輸入```.venv\Scripts\activate.bat```後
++ 輸入```.venv\Scripts\activate.bat```後Enter
 + 輸入``` pip install  -r requirements.txt```後Enter
 + 確認你的Chrome瀏覽器是哪一個版本，例如:我是97開頭的我就去裝97開頭的版本，若版本不是97的就下載解壓後取代我專案裡面的chromedriver.exe
 + 確認環境沒問題後即可執行程式
