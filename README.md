@@ -17,7 +17,7 @@
 
 [環境設定教學](https://youtu.be/toN67sgujtU)  
 [MyFcuLogin.py腳本示範影片](https://youtu.be/zDYV-ikjutE)  
-[逢甲選課2.0.py腳本示範影片](https://youtu.be/aPssjrIFcZI)
+[逢甲選課2.0.py腳本示範影片](https://youtu.be/aPssjrIFcZI)(因網站未開放選課，所以會出現連結找不到之報錯)
 ## 使用方法
 ```python 逢甲選課2.0.py ```  
 即可執行逢甲選課2.0.py這個檔案
