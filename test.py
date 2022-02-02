@@ -2,37 +2,32 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
-
 import os
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
 import ddddocr
 import base64
 mainUrl = "https://course.fcu.edu.tw"
 import configparser
-from ast import literal_eval
+import random
+from selenium.webdriver.support import expected_conditions as EC
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-options = webdriver.ChromeOptions()
-options.add_argument('–log-level=3')
-options.use_chromium = True
-options.add_experimental_option('excludeSwitches', ['enable-logging'])
-options.add_experimental_option("excludeSwitches", ["enable-automation"])
-options.add_experimental_option('useAutomationExtension', False)
-options.add_experimental_option("prefs", {"profile.password_manager_enabled": False, "credentials_enable_service": False})
-
-browser=webdriver.Chrome(chrome_options=options)
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+browser = webdriver.Chrome(chrome_options=chrome_options)
 browser.maximize_window()
 
+# 帳號及密碼
+username = 'd0948511'
+password = ''
 
-username = '帳號'
-password = '密碼'
-
-
+# 選課代號
 classID = []
+line=''
 
-
-grabbed = True
 
 
 def login():
@@ -69,60 +64,50 @@ def login():
 
 
 def grab():
-    size=0
-    while True:
-        if browser.current_url != mainUrl:
-            break
-        
-    prompt = "請依照喜好程度由大到小輸入-> "
-    #line = input(prompt)
-    #line="1234"
-    #while line!='\n':
-     #   n=literal_eval(input(line))
-      #  classID.append(n)
-       # size+=1
-        #line = input(prompt)
-    #for i in classID:
-     #   print(i)
-    
-    while True:
-        # select
-        
-        browser.find_element_by_xpath(
-            '//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]').click()
+    print("如果想要1234、2256兩門課就輸入1234 2256後enter，課別之間用空白分開\n")
+    line=input('輸入想要的課程，用空白分開，enter結束讀取:')
+    classID=line.split()
+    print('以下是你選的課程代號')
+    for i in classID:
+        print(i)
+    while len(classID):
 
-        # input class ID
-        browser.find_element_by_xpath(
-            '//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]').send_keys(classID[size])
-        browser.find_element_by_xpath(
-            '//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[8]/input').click()
-        size-=1
-        # alert
-        sleep(0.7)
-        alert = browser.switch_to_alert()
-
-        alertInfo = alert.text
-        currentValue = int(alertInfo[10:13].strip())
-        openValue = int(alertInfo[14:18].strip())
-        alert.accept()
-
-        print('剩餘名額:', currentValue)
-        print('開放名額:', openValue)
+        try:
+            br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]')))
+            br.click()
+        except:
+            print('連結找不到')
+            
+        try:
+            br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]')))
+            br.send_keys(classID[len(classID)-1])
+        except:
+            print('連結找不到')
+            
         
-        if(currentValue > 0 and grabbed and size==0 ):
-            break
+        try:
+            br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[8]/input')))
+            br.click()
+        except :
+            print('連結找不到')
+            
         
-        browser.get(browser.current_url)
+
 
     # 選課
-    if grabbed:
-        browser.find_element_by_xpath(
+        try:
+            browser.find_element_by_xpath(
             '//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
-        print('選課成功')
-    sleep(20)
+            classID.remove(classID[len(classID)-1])
+            print('選課成功')
+            sleep(10)
+        except:
+            print('沒有搶到哦，再接再厲')
+            
+
 
 
 if __name__ == "__main__":
     login()
     grab()
-    browser.close()
+    browser.quit()
