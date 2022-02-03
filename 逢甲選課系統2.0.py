@@ -88,6 +88,17 @@ def grab():
         try:
             br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[8]/input')))
             br.click()
+            sleep(0.7)
+            alert = browser.switch_to_alert()
+
+            alertInfo = alert.text
+            currentValue = int(alertInfo[10:13].strip())
+            openValue = int(alertInfo[14:18].strip())
+            alert.accept()
+
+            print('剩餘名額:', currentValue)
+            print('開放名額:', openValue)
+            
         except :
             print('連結找不到')
             
