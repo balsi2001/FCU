@@ -17,6 +17,8 @@ config.read('config.ini')
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+#chrome_options.add_argument('--headless')這行註解拿掉即可使程式在背景執行
+
 browser = webdriver.Chrome(chrome_options=chrome_options)
 browser.maximize_window()
 
