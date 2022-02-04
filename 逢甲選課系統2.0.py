@@ -88,7 +88,6 @@ def grab():
         try:
             br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[8]/input')))
             br.click()
-            sleep(0.7)
             alert = browser.switch_to_alert()
 
             alertInfo = alert.text
@@ -111,7 +110,7 @@ def grab():
             '//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
             classID.remove(classID[len(classID)-1])
             print('選課成功')
-            sleep(10)
+            sleep(2)
         except:
             print('沒有搶到哦，再接再厲')
             
