@@ -23,7 +23,7 @@
 即可執行逢甲選課2.0.py這個檔案
 執行範例如圖:  
 ![](https://github.com/balsi2001/FCU/blob/main/image.png)
-## 逢甲選課2.0.py功能及環境需球(繼承https://github.com/zephyrxvxx7/FCU-grabbed-class)
+## 逢甲選課2.0.py功能及環境需球(繼承https://github.com/zephyrxvxx7/FCU-grabbed-class之逢甲幹課腳本)
 ### 環境需求
  + selenium
  + chromedriver
