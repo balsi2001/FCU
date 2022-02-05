@@ -62,12 +62,12 @@ def login():
     browser.find_element_by_xpath(
         '//*[@id="ctl00_Login1_LoginButton"]').click()
 
-    print('登入成功')
+    print('\n登入成功')
 
 
 def grab():
-    print("如果想要1234、2256兩門課就輸入1234 2256後enter，課別之間用空白分開\n")
-    line=input('輸入想要的課程，用空白分開，enter結束讀取:')
+    print("如果想要1234、2256兩門課就輸入1234 2256後Enter，課別之間用空白分開")
+    line=input('輸入想要的課程，用空白分開，Enter結束讀取:')
     classID=line.split()
     print('以下是你選的課程代號')
     for i in classID:
