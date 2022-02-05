@@ -15,7 +15,7 @@
 + 最後，請確認執行程式時是在虛擬環境中，若不在的話，請在程式當前路徑下使用CMD並輸入```.venv\Scripts\activate.bat```後Enter
 ## 影片
 
-[環境設定教學](https://youtu.be/toN67sgujtU)  
+[環境安裝及設定教學](https://youtu.be/toN67sgujtU)  
 [MyFcuLogin.py腳本示範影片](https://youtu.be/zDYV-ikjutE)  
 [逢甲選課2.0.py腳本示範影片](https://youtu.be/aPssjrIFcZI)(因網站未開放選課，所以會出現連結找不到之報錯)
 ## 使用方法
