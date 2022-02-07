@@ -104,23 +104,18 @@ def grab():
             
         except :
             print('連結找不到')
-            
-        
-
 
     # 選課
-        if(currentValue > 0 ):
-            try:
-                browser.get(browser.current_url)
-                browser.find_element_by_xpath(
-            '//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
-                classID.remove(classID[len(classID)-1])
-                print('選課成功')
-                sleep(2)
-            except:
-                print('沒有搶到哦，再接再厲')
+        try:
+            br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input')))
+            br.click()
+            classID.remove(classID[len(classID)-1])
+            print('選課成功')
+            sleep(2)
+        except:
+            print('沒有搶到哦，再接再厲')
         
-
+        browser.get(browser.current_url)
 
 
 if __name__ == "__main__":
