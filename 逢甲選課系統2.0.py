@@ -114,7 +114,7 @@ def grab():
             sleep(2)
         except:
             print('沒有搶到哦，再接再厲')
-        
+        #browser.refresh()
         browser.get(browser.current_url)
 
 
