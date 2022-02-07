@@ -62,17 +62,19 @@ def login():
     browser.find_element_by_xpath(
         '//*[@id="ctl00_Login1_LoginButton"]').click()
 
-    print('\n登入成功')
+    print('登入成功')
 
 
 def grab():
-    print("如果想要1234、2256兩門課就輸入1234 2256後Enter，課別之間用空白分開")
-    line=input('輸入想要的課程，用空白分開，Enter結束讀取:')
+    print("如果想要1234、2256兩門課就輸入1234 2256後enter，課別之間用空白分開\n")
+    line=input('輸入想要的課程，用空白分開，enter結束讀取:')
     classID=line.split()
     print('以下是你選的課程代號')
     for i in classID:
         print(i)
+    
     while len(classID):
+        
         random.shuffle(classID)
         try:
             br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]')))
@@ -107,15 +109,17 @@ def grab():
 
 
     # 選課
-        try:
-            browser.find_element_by_xpath(
+        if(currentValue > 0 ):
+            try:
+                browser.get(browser.current_url)
+                browser.find_element_by_xpath(
             '//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
-            classID.remove(classID[len(classID)-1])
-            print('選課成功')
-            sleep(2)
-        except:
-            print('沒有搶到哦，再接再厲')
-            
+                classID.remove(classID[len(classID)-1])
+                print('選課成功')
+                sleep(2)
+            except:
+                print('沒有搶到哦，再接再厲')
+        
 
 
 
