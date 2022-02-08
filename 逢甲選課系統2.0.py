@@ -66,6 +66,7 @@ def login():
 
 
 def grab():
+    
     print("如果想要1234、2256兩門課就輸入1234 2256後enter，課別之間用空白分開\n")
     line=input('輸入想要的課程，用空白分開，enter結束讀取:')
     classID=line.split()
@@ -78,20 +79,20 @@ def grab():
         random.shuffle(classID)
         try:
             br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]')))
-            br.click()
+            browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]').click()
         except:
             print('連結找不到')
             
         try:
             br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]')))
-            br.send_keys(classID[len(classID)-1])
+            browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]').send_keys(classID[len(classID)-1])
         except:
             print('連結找不到')
             
         
         try:
             br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[8]/input')))
-            br.click()
+            browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[8]/input').click()
             alert = browser.switch_to_alert()
 
             alertInfo = alert.text
@@ -108,13 +109,13 @@ def grab():
     # 選課
         try:
             br=WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input')))
-            br.click()
+            browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
             classID.remove(classID[len(classID)-1])
             print('選課成功')
             sleep(2)
         except:
-            print('沒有搶到哦，再接再厲')
-        #browser.refresh()
+                print('沒有搶到哦，再接再厲')
+        
         browser.get(browser.current_url)
 
 
