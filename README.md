@@ -1,6 +1,4 @@
 # FCU Information System Automation Script
-## 沒技術之技術支援
-d0948511@o365.fcu.edu.tw
 ## 帳號密碼統一於config.ini檔案內設定
 ![更改帳號密碼即可](https://github.com/balsi2001/FCU/blob/main/%E5%9C%96%E7%89%87.png)  
 不要動到上面的[data]  
