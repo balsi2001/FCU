@@ -66,7 +66,7 @@ def login():
 
 
 def grab():
-    
+    currentValue=0
     print("如果想要1234、2256兩門課就輸入1234 2256後enter，課別之間用空白分開\n")
     line=input('輸入想要的課程，用空白分開，enter結束讀取:')
     classID=line.split()
@@ -78,13 +78,13 @@ def grab():
         
         random.shuffle(classID)
         try:
-            WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]')))
+           # WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]')))
             browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]').click()
         except:
             print('連結找不到')
             
         try:
-            WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]')))
+            #WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]')))
             
             browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]').send_keys(classID[len(classID)-1])
         except:
@@ -92,8 +92,10 @@ def grab():
             
         
         try:
-            WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[8]/input')))
-            browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[8]/input').click()
+            browser.find_element_by_xpath(
+            '//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[8]/input').click()
+
+            sleep(0.7)
             alert = browser.switch_to_alert()
 
             alertInfo = alert.text
@@ -103,24 +105,22 @@ def grab():
 
             print('剩餘名額:', currentValue)
             print('開放名額:', openValue)
-            
-        except :
-            print('連結找不到')
-
-    # 選課
-        try:
-            WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input')))
-            browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
-            classID.remove(classID[len(classID)-1])
-            print('選課成功')
-            sleep(2)
         except:
-                print('沒有搶到哦，再接再厲')
+            print('連結找不到')
+    # 選課
         
+        try:
+               # WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input')))
+                browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
+                classID.remove(classID[len(classID)-1])
+                sleep(2.1)
+        except:
+                    print('沒有搶到哦，再接再厲')
+                    sleep(2.1)
         browser.get(browser.current_url)
-
+        print('選課成功')
 
 if __name__ == "__main__":
     login()
     grab()
-    browser.quit()
+   
