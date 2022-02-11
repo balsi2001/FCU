@@ -117,8 +117,9 @@ def grab():
         except:
                     print('沒有搶到哦，再接再厲')
                     sleep(2.1)
+        sleep(1)
         browser.get(browser.current_url)
-        print('選課成功')
+    print('選課成功')
 
 if __name__ == "__main__":
     login()
