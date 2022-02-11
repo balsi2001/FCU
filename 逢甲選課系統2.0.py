@@ -112,14 +112,18 @@ def grab():
             try:
                 # WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input')))
                     browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
-                    classID.remove(classID[len(classID)-1])
+                    if browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text.find('加選成功')!=-1:
+                        print('加選成功')
+                        classID.remove(classID[len(classID)-1])
+                    else:
+                        print('沒有搶到哦，再接再厲')
                     sleep(2.1)
             except:
-                        print('沒有搶到哦，再接再厲')
-                        sleep(2.1)
+                print('連結找不到')      
+                sleep(2.1)
             sleep(1)
         browser.get(browser.current_url)
-    print('選課成功')
+    
 
 if __name__ == "__main__":
     login()
