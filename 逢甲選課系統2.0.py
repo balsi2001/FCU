@@ -124,4 +124,4 @@ def grab():
 if __name__ == "__main__":
     login()
     grab()
-   
+    browser.quit()
