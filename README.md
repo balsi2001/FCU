@@ -19,8 +19,8 @@
 [完整播放清單](https://youtube.com/playlist?list=PLkpg2E7EV2RnE99FYN-Xp306nfjEBgbAD)  
 [環境安裝及設定教學](https://youtu.be/toN67sgujtU)  
 [MyFcuLogin.py腳本示範影片](https://youtu.be/zDYV-ikjutE)  
-[逢甲選課系統2.0.py腳本示範影片](https://youtu.be/aPssjrIFcZI)(因網站未開放選課，所以會出現連結找不到之報錯)  
-[逢甲選課系統2.0.py測試影片](https://youtu.be/SznJQvBNjVY)(經選課系統開放，使用程式後確認可正常執行)  
+[逢甲選課系統2.0.py測試1影片](https://youtu.be/aPssjrIFcZI)(因網站未開放選課，所以會出現連結找不到之報錯)  
+[逢甲選課系統2.0.py測試2影片](https://youtu.be/SznJQvBNjVY)(經選課系統開放，使用程式後確認可正常執行)  
 [逢甲選課系統2.0.py示範影片](https://youtu.be/84aGE_nhS34)(退選後成功用程式加選)
 ## 使用方法
 ```python 逢甲選課系統2.0.py ```  
