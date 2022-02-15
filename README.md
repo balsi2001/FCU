@@ -1,4 +1,6 @@
 # FCU Information System Automation Script
+## 免責聲明
++ 利用```逢甲選課系統2.0.py```搶課來賣等非正當行為皆與本人無關
 ## 帳號密碼統一於config.ini檔案內設定
 ![更改帳號密碼即可](https://github.com/balsi2001/FCU/blob/main/%E5%9C%96%E7%89%87.png)  
 不要動到上面的[data]  
