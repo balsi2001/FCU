@@ -17,6 +17,8 @@
 + 最後，請確認執行程式時是在虛擬環境中，若不在的話，請在程式當前路徑下使用CMD並輸入```.venv\Scripts\activate.bat```後Enter
 + 若執行出現問題，請依照下方步驟執行後並重新下載或clone此專案，並重複上述步驟，完成環境的安裝:  
  + 輸入```pip uninstall selenium```後Enter
+ + 輸入```pip uninstall ddddocr```後Enter
+ + 刪除整份專案
 ## 影片
 [完整播放清單](https://youtube.com/playlist?list=PLkpg2E7EV2RnE99FYN-Xp306nfjEBgbAD)  
 [環境安裝及設定教學](https://youtu.be/toN67sgujtU)  
