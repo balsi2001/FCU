@@ -1,6 +1,6 @@
 # FCU Information System Automation Script
--[x].py
--[x][.exe](https://github.com/balsi2001/FCU-exe)
+-[x] .py
+-[x] [.exe](https://github.com/balsi2001/FCU-exe)
 ## 免責聲明
 + 利用```逢甲選課系統2.0.py```搶課來賣等非正當行為皆與本人無關
 ## 帳號密碼統一於config.ini檔案內設定
