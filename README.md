@@ -14,7 +14,6 @@
 + 輸入```python -m venv .venv```後Enter 
 + 輸入```.venv\Scripts\activate.bat```後Enter
 + 輸入``` pip install  -r requirements.txt```後Enter
-+ 確認你的Chrome瀏覽器是哪一個版本，例如:我是97開頭的我就去裝97開頭的版本，若版本不是97的就下載解壓後取代我專案裡面的chromedriver.exe
 + 確認環境沒問題後即可執行程式
 + 最後，請確認執行程式時是在虛擬環境中，若不在的話，請在程式當前路徑下使用CMD並輸入```.venv\Scripts\activate.bat```後Enter
 + 若執行出現環境問題，請依照下方步驟執行後並重新下載或clone此專案，並重複上述步驟，完成環境的安裝:  
@@ -23,7 +22,7 @@
  + 刪除整份專案
 ## 影片
 [完整播放清單](https://youtube.com/playlist?list=PLkpg2E7EV2RnE99FYN-Xp306nfjEBgbAD)  
-[環境安裝及設定教學](https://youtu.be/toN67sgujtU)  
+[環境安裝及設定教學](https://youtu.be/toN67sgujtU)  (現在不需要chromedriver了，只需要chrome瀏覽器就可以)
 [MyFCULogin.py腳本示範影片](https://youtu.be/zDYV-ikjutE)  
 [逢甲選課系統2.0.py測試1影片](https://youtu.be/aPssjrIFcZI)(因網站未開放選課，所以會出現連結找不到之報錯)  
 [逢甲選課系統2.0.py測試2影片](https://youtu.be/SznJQvBNjVY)(經選課系統開放，使用程式後確認可正常執行)  
@@ -36,7 +35,7 @@
 ## 逢甲選課系統2.0.py功能及環境需球(繼承[逢甲幹課程式](https://github.com/zephyrxvxx7/FCU-grabbed-class))
 ### 環境需求
  + selenium
- + chromedriver
+ + chrome瀏覽器
  + python
  + ddddocr 
 ### V.0129.1
