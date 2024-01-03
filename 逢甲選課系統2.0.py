@@ -20,7 +20,7 @@ chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 #chrome_options.add_argument('--headless')這行註解拿掉即可使程式在背景執行
 
-browser = webdriver.Chrome(chrome_options=chrome_options)
+browser = webdriver.Chrome(options=chrome_options)
 browser.maximize_window()
 
 # 帳號及密碼
@@ -46,7 +46,7 @@ def login():
     cnv.width = ele.width; cnv.height = ele.height;
     cnv.getContext('2d').drawImage(ele, 0, 0);
     return cnv.toDataURL('image/jpeg').substring(22);    
-    """, browser.find_element_by_xpath("//*[@id='ctl00_Login1_Image1']"))
+    """, browser.find_element(By.XPATH,"//*[@id='ctl00_Login1_Image1']"))
 
     with open("captcha_login.png", 'wb') as image:
         image.write(base64.b64decode(img_base64))
@@ -54,13 +54,13 @@ def login():
         img_bytes = f.read()
     res = ocr.classification(img_bytes)
 
-    browser.find_element_by_xpath(
+    browser.find_element(By.XPATH,
         '//*[@id="ctl00_Login1_UserName"]').send_keys(config['data']['user'])
-    browser.find_element_by_xpath(
+    browser.find_element(By.XPATH,
         '//*[@id="ctl00_Login1_Password"]').send_keys(config['data']['pass'])
-    browser.find_element_by_xpath(
+    browser.find_element(By.XPATH,
         '//*[@id="ctl00_Login1_vcode"]').send_keys(res)
-    browser.find_element_by_xpath(
+    browser.find_element(By.XPATH,
         '//*[@id="ctl00_Login1_LoginButton"]').click()
 
     print('登入成功')
@@ -82,44 +82,29 @@ def grab():
         random.shuffle(classID)
         try:
             #WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]')))
-            browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]').click()
+            browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]').click()
         except:
             print('',end='')
         try:
             #WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]')))
             
-            browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]').send_keys(classID[len(classID)-1])
+            browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]').send_keys(classID[len(classID)-1])
         except:
             print('',end='')
         
-        try:
-            #WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[8]/input')))
-            browser.find_element_by_xpath(
-            '//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[8]/input').click()
-
-            sleep(0.7)
-            alert = browser.switch_to_alert()
-
-            alertInfo = alert.text
-            currentValue = int(alertInfo[10:13].strip())
-            openValue = int(alertInfo[14:18].strip())
-            alert.accept()
-
-            print('剩餘名額:', currentValue)
-            print('開放名額:', openValue)
-        except:
-            print('',end='')
+        
             
     # 選課  
-        if(currentValue>0):
+        if(1):
             try:
-                    #WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input')))
-                    browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
-                    if browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text.find('加選成功')!=-1:
-                        print(browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text)
+                    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input')))
+                    browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
+                    #//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input
+                    if browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text.find('加選成功')!=-1:
+                        print(browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text)
                         classID.remove(classID[len(classID)-1])
                     else:
-                        print(browser.find_element_by_xpath('//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text)
+                        print(browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text)
             except:
                 print('',end='')      
                 
