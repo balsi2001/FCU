@@ -22,7 +22,7 @@
  + 刪除整份專案
 ## 影片
 [完整播放清單](https://youtube.com/playlist?list=PLkpg2E7EV2RnE99FYN-Xp306nfjEBgbAD)  
-[環境安裝及設定教學](https://youtu.be/toN67sgujtU)  (現在不需要chromedriver了，只需要chrome瀏覽器就可以)
+[環境安裝及設定教學](https://youtu.be/toN67sgujtU)(現在不需要chromedriver了，只需要chrome瀏覽器就可以)
 [MyFCULogin.py腳本示範影片](https://youtu.be/zDYV-ikjutE)  
 [逢甲選課系統2.0.py測試1影片](https://youtu.be/aPssjrIFcZI)(因網站未開放選課，所以會出現連結找不到之報錯)  
 [逢甲選課系統2.0.py測試2影片](https://youtu.be/SznJQvBNjVY)(經選課系統開放，使用程式後確認可正常執行)  
