@@ -34,7 +34,7 @@
 ### 環境需求
  + selenium
  + chrome瀏覽器
- + python（務必安裝3.9之前的版本）
+ + python（務必安裝3.9之前的版本-也可以直接點擊後面連結下載：https://www.python.org/downloads/release/python-3912/）  
  + ddddocr 
 ### V.0129.1
 - [x] 自動登入選課系統並輸入驗證碼功能
