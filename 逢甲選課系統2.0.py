@@ -13,7 +13,7 @@ mainUrl = "https://course.fcu.edu.tw"
 import configparser
 import random
 from selenium.webdriver.support import expected_conditions as EC
-config = configparser.ConfigParser()
+config = configparser.RawConfigParser()
 config.read('config.ini')
 
 chrome_options = webdriver.ChromeOptions()
@@ -57,7 +57,7 @@ def login():
     browser.find_element(By.XPATH,
         '//*[@id="ctl00_Login1_UserName"]').send_keys(config['data']['user'])
     browser.find_element(By.XPATH,
-        '//*[@id="ctl00_Login1_Password"]').send_keys(config['data']['pass'])
+        '//*[@id="ctl00_Login1_Password"]').send_keys(config["data"]["pass"])
     browser.find_element(By.XPATH,
         '//*[@id="ctl00_Login1_vcode"]').send_keys(res)
     browser.find_element(By.XPATH,
