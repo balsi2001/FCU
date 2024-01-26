@@ -128,6 +128,7 @@ def grab():
                         print(browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text)
                         if '驗証碼' in browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text:
                             login()
+                            print('因為後來系統登入後面的驗證碼就算輸入正確也不會替你加選課程，所以我直接在下一行叫程式睡覺(你們也可以在其他地方叫程式睡覺，只是要注意縮排)，但我不確定10秒夠不夠，以及系統判定是否為機器人的地方在哪裡，這就要你們自己嘗試了')
                             time.sleep(10)
             except:
                 print('',end='')      
