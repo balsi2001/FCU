@@ -95,7 +95,27 @@ def grab():
         
             
     # 選課  
-        if(1):
+        if(1):#//*[@id="ctl00_MainContent_TabContainer1_tabSelected_CAPTCHA_imgCAPTCHA"]驗證碼
+#//*[@id="ctl00_MainContent_TabContainer1_tabSelected_CAPTCHA_tbCAPTCHA"]驗證碼輸入框
+            try:
+                    
+                    img_base64 = browser.execute_script("""
+    var ele = arguments[0];
+    var cnv = document.createElement('canvas');
+    cnv.width = ele.width; cnv.height = ele.height;
+    cnv.getContext('2d').drawImage(ele, 0, 0);
+    return cnv.toDataURL('image/jpeg').substring(22);    
+    """, browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_CAPTCHA_imgCAPTCHA"]'))
+
+
+                    with open("captcha_login.png", 'wb') as image:
+                    	image.write(base64.b64decode(img_base64))
+                    with open('captcha_login.png', 'rb') as f:
+                    	img_bytes = f.read()
+                    res = ocr.classification(img_bytes)
+                    browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_CAPTCHA_tbCAPTCHA"]').send_keys(res)
+            except:
+                    print('',end='')
             try:
                     WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input')))
                     browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
@@ -105,14 +125,12 @@ def grab():
                         classID.remove(classID[len(classID)-1])
                     else:
                         print(browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text)
-                        if '驗證碼' in browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text:
-                            login()
+
             except:
                 print('',end='')      
         #print('browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text)        
         browser.get(browser.current_url)
     
-
 if __name__ == "__main__":
     login()
     grab()
