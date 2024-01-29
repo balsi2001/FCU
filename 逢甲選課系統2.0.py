@@ -62,12 +62,15 @@ def login():
         '//*[@id="ctl00_Login1_vcode"]').send_keys(res)
     browser.find_element(By.XPATH,
         '//*[@id="ctl00_Login1_LoginButton"]').click()
-
-    print('登入成功')
-
+    
+    if '登出' in browser.page_source:
+    	print('登入成功')
+    else:
+    	login()
 
 def grab():
     currentValue=0
+    t=0.1
     print("如果想要1234、2256兩門課就輸入1234 2256後enter，課別之間用空白分開\n")
     line=input('輸入想要的課程，用空白分開，enter結束讀取:')
     classID=line.split()
@@ -83,42 +86,27 @@ def grab():
         try:
             #WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]')))
             browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_Label3"]').click()
+            
         except:
             print('',end='')
+        sleep(t)
         try:
             #WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]')))
             
             browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_tbSubID"]').send_keys(classID[len(classID)-1])
+            
         except:
             print('',end='')
-        
-        
+        sleep(t)        
             
     # 選課  
         if(1):#//*[@id="ctl00_MainContent_TabContainer1_tabSelected_CAPTCHA_imgCAPTCHA"]驗證碼
 #//*[@id="ctl00_MainContent_TabContainer1_tabSelected_CAPTCHA_tbCAPTCHA"]驗證碼輸入框
-            try:
-                    
-                    img_base64 = browser.execute_script("""
-    var ele = arguments[0];
-    var cnv = document.createElement('canvas');
-    cnv.width = ele.width; cnv.height = ele.height;
-    cnv.getContext('2d').drawImage(ele, 0, 0);
-    return cnv.toDataURL('image/jpeg').substring(22);    
-    """, browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_CAPTCHA_imgCAPTCHA"]'))
-
-
-                    with open("captcha_login.png", 'wb') as image:
-                    	image.write(base64.b64decode(img_base64))
-                    with open('captcha_login.png', 'rb') as f:
-                    	img_bytes = f.read()
-                    res = ocr.classification(img_bytes)
-                    browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_CAPTCHA_tbCAPTCHA"]').send_keys(res)
-            except:
-                    print('',end='')
+            
             try:
                     WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input')))
                     browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input').click()
+                    
                     #//*[@id="ctl00_MainContent_TabContainer1_tabSelected_gvToAdd"]/tbody/tr[2]/td[1]/input
                     if browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text.find('加選成功')!=-1:
                         print(browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text)
@@ -127,13 +115,18 @@ def grab():
                         
                         print(browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text)
                         if '驗証碼' in browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text:
+                            print(f'增加待機時間為{t}秒')
+                            t=t+0.1
                             login()
-                            print('因為後來系統登入後面的驗證碼就算輸入正確也不會替你加選課程，所以我直接在下一行叫程式睡覺(你們也可以在其他地方叫程式睡覺，只是要注意縮排)，但我不確定10秒夠不夠，以及系統判定是否為機器人的地方在哪裡，這就要你們自己嘗試了')
-                            time.sleep(10)
+
+                            
             except:
                 print('',end='')      
         #print('browser.find_element(By.XPATH,'//*[@id="ctl00_MainContent_TabContainer1_tabSelected_lblMsgBlock"]/span').text)        
         browser.get(browser.current_url)
+        sleep(t)
+        with open('t_to_wait','w')as ff:
+        	ff.write(str(t))
     
 if __name__ == "__main__":
     login()
