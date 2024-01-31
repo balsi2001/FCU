@@ -20,9 +20,13 @@
  + 輸入```pip uninstall ddddocr```後Enter
  + 刪除整份專案
 ## 安裝步驟
+### 步驟1
 ![](https://github.com/balsi2001/FCU/blob/main/%E5%AE%89%E8%A3%9D%E6%AD%A5%E9%A9%9F-1.png)
+### 步驟2
 ![](https://github.com/balsi2001/FCU/blob/main/安裝步驟-2.png)
+### 步驟3
 ![](https://github.com/balsi2001/FCU/blob/main/安裝步驟-3.png)
+### 步驟4
 ![](https://github.com/balsi2001/FCU/blob/main/安裝步驟-4.png)
 ## 影片
 [完整播放清單](https://youtube.com/playlist?list=PLkpg2E7EV2RnE99FYN-Xp306nfjEBgbAD)  
