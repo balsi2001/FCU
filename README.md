@@ -39,7 +39,7 @@
 即可執行逢甲選課系統2.0.py這個檔案
 執行範例如圖:  
 ![](https://github.com/balsi2001/FCU/blob/main/image.png)
-## 逢甲選課系統2.0.py功能及環境需球(繼承[逢甲幹課程式](https://github.com/zephyrxvxx7/FCU-grabbed-class))
+## 逢甲選課系統2.0.py功能及環境需求(繼承[逢甲幹課程式](https://github.com/zephyrxvxx7/FCU-grabbed-class))
 ### 環境需求
  + selenium
  + chrome瀏覽器
